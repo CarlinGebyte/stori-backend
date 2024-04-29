@@ -13,10 +13,11 @@ services:
       - .:/usr/src/app
     env_file: .env.local
     environment:
+      - PORT=${PORT}
       - MONGODB_URI=${MONGODB_URI}
-      - RESEND_API_KEY=$RESEND_API_KEY
-      - ETHEREAL_EMAIL=$ETHEREAL_EMAIL
-      - ETHEREAL_PASSWORD=$ETHEREAL_PASSWORD
+      - RESEND_API_KEY=${RESEND_API_KEY}
+      - ETHEREAL_EMAIL=${ETHEREAL_EMAIL}
+      - ETHEREAL_PASSWORD=${ETHEREAL_PASSWORD}
   mongodb:
     container_name: mongodb
     image: mongo:latest
