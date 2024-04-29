@@ -2,7 +2,8 @@ version: '3.8'
 
 services:
   app:
-    container_name: storicard
+    container_name: storicard-backend
+    image: storicard-backend
     restart: always
     build: .
     ports:
