@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  app:
+    container_name: storicard
+    restart: always
+    build: .
+    ports:
+      - 3000:3000
+    links:
+      - mongodb
+    volumes:
+      - .:/usr/src/app
+    env_file: .env.local
+    environment:
+      - MONGODB_URI=${MONGODB_URI}
+      - RESEND_API_KEY=$RESEND_API_KEY
+      - ETHEREAL_EMAIL=$ETHEREAL_EMAIL
+      - ETHEREAL_PASSWORD=$ETHEREAL_PASSWORD
+  mongodb:
+    container_name: mongodb
+    image: mongo:latest
+    restart: unless-stopped
+    ports:
+      - 27017:27017
+    logging:
+      driver: none
